@@ -59,8 +59,8 @@ Relaciones:
 
 ### Clonar repositorio
 
-git clone https://github.com/TU_USUARIO/stories-api.git  
-cd stories-api
+git clone https://github.com/belAlmendras/lluvia-de-ideas-api.git  
+cd lluvia-de-ideas-api
 
 ---
 
@@ -131,5 +131,5 @@ Practicar desarrollo backend profesional aplicando:
 
 ## Autora
 
-Belén Almendras  
+Belén Almendros  
 Desarrolladora Full Stack junior
