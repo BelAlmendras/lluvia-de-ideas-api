@@ -45,12 +45,14 @@ Entidades principales:
 - Cuento
 - Comentario
 - Categoría
+- Me gusta
 
 Relaciones:
 
 - Un usuario puede crear muchos cuentos
-- Un cuento pertenece a una categoría
+- Un cuento puede tener muchas categorías
 - Un cuento tiene muchos comentarios
+- Un cuento tiene muchos "me gusta"
 - Cada comentario pertenece a un usuario
 
 ---
@@ -114,7 +116,7 @@ Próximas mejoras:
 - Tests
 - Documentación con Swagger
 - Deploy en Render
-
+- Moderación hibrida con integración de IA
 ---
 
 ## Objetivo
@@ -132,4 +134,4 @@ Practicar desarrollo backend profesional aplicando:
 ## Autora
 
 Belén Almendros  
-Desarrolladora Full Stack junior
+Desarrolladora Full Stack 
