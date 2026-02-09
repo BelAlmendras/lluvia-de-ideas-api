@@ -1,6 +1,7 @@
 package com.lluviadeideas.storiesapi.model;
 
 public enum Rol {
-    USER,
+    USUARIO,
+    MODERADOR,
     ADMIN,
 }
