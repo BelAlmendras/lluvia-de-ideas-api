@@ -44,6 +44,7 @@ public class Cuento {
     @JoinColumn(name = "usuario_id",nullable = false)
     private Usuario usuario;
 
+
     @NotBlank(message = "El cuento debe tener contenido")
     @Lob
     @Column(nullable = false)
@@ -83,6 +84,14 @@ public class Cuento {
 private Boolean declaraLegal;
 
 private LocalDateTime fechaDeclaracion;
+
+@OneToMany(mappedBy = "cuento")
+ private List<Comentario> comentarios;
+
+@OneToMany(mappedBy = "cuento")
+private List<Reporte> reportes = new ArrayList<>();
+
+
 
 public Cuento() {}
 
