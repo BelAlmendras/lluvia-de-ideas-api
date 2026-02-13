@@ -2,11 +2,14 @@ package com.lluviadeideas.storiesapi.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.*;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -17,9 +20,9 @@ import jakarta.persistence.GenerationType;
 
 
 @Entity
-@Table(name = "concurso_cuento")
+@Table(name = "concurso_ilustracion")
 @Getter @Setter
-public class ConcursoCuento {
+public class ConcursoIlustracion {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +34,10 @@ public class ConcursoCuento {
     @Lob
     @NotBlank(message = "La descripcion es obligatoria")
     private String descripcion;
+
+    @OneToMany(mappedBy = "concurso", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ilustracion> ilustraciones = new ArrayList<>();
+ 
 
     @NotBlank
     private String bases;
@@ -59,7 +66,6 @@ public class ConcursoCuento {
     protected void onUpdate() {
     updatedAt = LocalDateTime.now();
 }
-
-public ConcursoCuento(){};
-
+ 
+public ConcursoIlustracion(){}
 }
