@@ -3,7 +3,6 @@ package com.lluviadeideas.storiesapi.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import io.micrometer.common.lang.Nullable;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
