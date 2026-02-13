@@ -91,6 +91,9 @@ private LocalDateTime fechaDeclaracion;
 @OneToMany(mappedBy = "cuento")
 private List<Reporte> reportes = new ArrayList<>();
 
+@ManyToOne
+@JoinColumn(name = "concurso_id", nullable = true)
+private ConcursoCuento concurso;
 
 
 public Cuento() {}
