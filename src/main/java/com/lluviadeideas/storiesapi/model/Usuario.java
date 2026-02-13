@@ -2,7 +2,8 @@ package com.lluviadeideas.storiesapi.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.*;
+
+import io.micrometer.common.lang.Nullable;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,15 +11,12 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
-
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -66,11 +64,9 @@ public class Usuario {
     @Size(max = 500)
     private String biografia;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name="roles_usuario", joinColumns = @JoinColumn(name="usuario_id"),inverseJoinColumns = @JoinColumn(name = "rol_id")
-    )
-    private Set<Rol> roles = new HashSet<>();
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
 
     @Column(nullable = false)
     private boolean activo = true;

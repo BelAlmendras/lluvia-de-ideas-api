@@ -2,24 +2,26 @@ package com.lluviadeideas.storiesapi.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.*;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import lombok.*;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "concurso_cuento")
+@Table(name ="taller")
 @Getter @Setter
-public class ConcursoCuento {
+public class Taller {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +35,13 @@ public class ConcursoCuento {
     @NotBlank(message = "La descripcion es obligatoria")
     private String descripcion;
 
-    @NotBlank
-    private String bases;
+    @JoinColumn
+    private List<Usuario> tallerista= new ArrayList<>();
 
-    @Column(nullable=false)
+    @JoinColumn
+    private List<Usuario> participantes= new ArrayList<>();
+
+     @Column(nullable=false)
     private LocalDate fechaInicio;
 
     @Column(nullable=false)
@@ -60,7 +65,8 @@ public class ConcursoCuento {
     protected void onUpdate() {
     updatedAt = LocalDateTime.now();
 }
+    
+     public Taller(){}
 
-public ConcursoCuento(){};
 
 }
