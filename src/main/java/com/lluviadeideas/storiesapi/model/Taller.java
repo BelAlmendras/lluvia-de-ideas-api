@@ -9,8 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -35,13 +35,10 @@ public class Taller {
     @NotBlank(message = "La descripcion es obligatoria")
     private String descripcion;
 
-    @JoinColumn
-    private List<Usuario> tallerista= new ArrayList<>();
+    @OneToMany(mappedBy = "taller")
+    private List<TallerParticipacion> participaciones = new ArrayList<>();
 
-    @JoinColumn
-    private List<Usuario> participantes= new ArrayList<>();
-
-     @Column(nullable=false)
+    @Column(nullable=false)
     private LocalDate fechaInicio;
 
     @Column(nullable=false)

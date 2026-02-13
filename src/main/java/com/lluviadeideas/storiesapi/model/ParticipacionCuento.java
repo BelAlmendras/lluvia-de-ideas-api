@@ -14,27 +14,27 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "taller_participacion")
+@Table(name = "pasrticipacion_cuento")
 @Getter @Setter
-public class TallerParticipacion {
-
+public class ParticipacionCuento{
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     @Column(nullable = false)
     @ManyToOne
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "taller_id")
-    private Taller taller;
+    @JoinColumn(name = "concursoCuento_id",nullable = false)
+    private ConcursoCuento concursoCuento;
 
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private RolConcurso rolConcurso;
 
-    public TallerParticipacion(){}
+
+    public ParticipacionCuento(){}
 }

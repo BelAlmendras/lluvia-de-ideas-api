@@ -38,6 +38,8 @@ public class ConcursoIlustracion {
     @OneToMany(mappedBy = "concurso", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ilustracion> ilustraciones = new ArrayList<>();
  
+    @OneToMany(mappedBy = "concursoIlustracion_id")
+    private List<ParticipacionIlustracion> participaciones = new ArrayList<>();
 
     @NotBlank
     private String bases;
