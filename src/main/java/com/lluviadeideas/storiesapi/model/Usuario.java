@@ -2,6 +2,8 @@ package com.lluviadeideas.storiesapi.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -16,6 +18,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -69,6 +72,9 @@ public class Usuario {
 
     @Column(nullable = false)
     private boolean activo = true;
+
+    @OneToMany(mappedBy = "usuario_id")
+    private List<Notificacion> notificacion= new ArrayList<>();
 
     @Column(updatable = false)
     private LocalDateTime createdAt;
