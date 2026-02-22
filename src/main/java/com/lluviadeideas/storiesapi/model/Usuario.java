@@ -18,6 +18,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -26,7 +27,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table (name = "usuarios")
+@Table (name = "usuarios", indexes = {@Index(name="idx_usuario_correo", columnList = "correo"),
+@Index(name = "idx_usuario_nombreUsuario", columnList = "nombreUsuario")})
 @Getter @Setter
 public class Usuario {
     
@@ -73,7 +75,7 @@ public class Usuario {
     @Column(nullable = false)
     private boolean activo = true;
 
-    @OneToMany(mappedBy = "usuario_id")
+    @OneToMany(mappedBy = "usuario_destino")
     private List<Notificacion> notificacion= new ArrayList<>();
 
     @Column(updatable = false)

@@ -23,8 +23,8 @@ public class TallerParticipacion {
     private Long id;
 
 
-    @Column(nullable = false)
     @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
     @ManyToOne
@@ -34,7 +34,7 @@ public class TallerParticipacion {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private RolConcurso rolConcurso;
+    private RolTaller rolTaller;
 
     public TallerParticipacion(){}
 }

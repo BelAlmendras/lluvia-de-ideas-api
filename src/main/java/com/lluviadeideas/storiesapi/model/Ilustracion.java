@@ -43,7 +43,7 @@ public class Ilustracion {
     private Cuento cuento;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "concurso_id")
+    @JoinColumn(name = "concursoIlustracion_id")
     private ConcursoIlustracion concursoIlustracion;
 
     @Column(nullable = false)

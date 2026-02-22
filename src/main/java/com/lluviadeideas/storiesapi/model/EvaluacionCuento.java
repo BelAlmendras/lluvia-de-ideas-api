@@ -14,15 +14,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "evaluacion_cuento,  uniqueConstraints = {\n" + //
-        "      @UniqueConstraint(columnNames = {\"juez_id\", \"cuento_id\", \"concurso_cuento_id\"})\n" + //
-        "   }")
+@Table(name = "evaluacion_cuento",  uniqueConstraints =  @UniqueConstraint(columnNames = {"juez_id", "cuento_id", "concurso_cuento_id"}))
 @Getter @Setter
 public class EvaluacionCuento {
     

@@ -1,5 +1,6 @@
 package com.lluviadeideas.storiesapi.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Categoria {
 private Long id;
 
 @NotBlank(message = "El nombre de la categoria no debe estar vacio")
+@Column(nullable = false, unique = true)
 private String nombre;
 
 public Categoria() {}

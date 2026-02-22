@@ -21,6 +21,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -28,7 +29,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "cuentos")
+@Table(name = "cuentos", indexes = {
+        @Index(name = "idx_cuento_usuario", columnList = "usuario_id"),
+        @Index(name = "idx_cuento_categoria", columnList = "categoria_id"),
+        @Index(name = "idx_cuento_estado", columnList = "estado_id")
+    })
 @Getter @Setter
 public class Cuento {
     
@@ -92,8 +97,8 @@ private LocalDateTime fechaDeclaracion;
 private List<Reporte> reportes = new ArrayList<>();
 
 @ManyToOne
-@JoinColumn(name = "concurso_id", nullable = true)
-private ConcursoCuento concurso;
+@JoinColumn(name = "concursoCuento_id", nullable = true)
+private ConcursoCuento concursoCuento;
 
 
 public Cuento() {}

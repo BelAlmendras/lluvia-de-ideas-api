@@ -9,14 +9,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "conversacion")
+@Table(name = "conversacion", uniqueConstraints = @UniqueConstraint(columnNames = {"usuario1","usuario2"}))
 @Getter @Setter
 public class Conversacion {
      
@@ -31,6 +33,7 @@ public class Conversacion {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Usuario usuario2;
+
 
     @Column(updatable = false)
     private LocalDateTime createdAt;

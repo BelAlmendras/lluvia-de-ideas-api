@@ -14,15 +14,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "evaluacion_cuento,  uniqueConstraints = {\n" + //
-        "      @UniqueConstraint(columnNames = {\"juez_id\", \"cuento_id\", \"concurso_cuento_id\"})\n" + //
-        "   }")
+@Table(name = "evaluacion_ilustracion",  uniqueConstraints =  @UniqueConstraint(columnNames = {"juez_id","ilustracion_id","concurso_ilustracion_id"}))
 @Getter @Setter
 public class EvaluacionIlustracion {
     
@@ -31,15 +30,15 @@ public class EvaluacionIlustracion {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable=false)
+    @JoinColumn(nullable=false, name = "juez_id")
     private Usuario juez;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
-    private Ilustracion Ilustracion;
+    @JoinColumn(nullable = false, name="ilustracion_id")
+    private Ilustracion ilustracion;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name="concurso_ilustracion_id")
     private ConcursoIlustracion concursoIlustracion;
     
     @NotNull(message = "El puntaje es obligatorio")

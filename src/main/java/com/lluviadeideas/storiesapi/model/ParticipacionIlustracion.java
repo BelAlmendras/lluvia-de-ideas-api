@@ -10,11 +10,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "participacion_ilustracion")
+@Table(name = "participacion_ilustracion", uniqueConstraints = @UniqueConstraint(columnNames = {"usuario_id","concursoIlustracion_id"}))
 @Getter @Setter
 public class ParticipacionIlustracion {
     
@@ -22,7 +23,7 @@ public class ParticipacionIlustracion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "usuario_id",nullable = false)
     @ManyToOne
     private Usuario usuario;
 

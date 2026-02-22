@@ -28,7 +28,7 @@ public class Mensaje {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(nullable=false)
+    @JoinColumn(nullable=false, name = "emisor_id")
     private Usuario emisor;
 
     @ManyToOne(fetch = FetchType.LAZY)

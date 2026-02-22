@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -35,10 +34,10 @@ public class ConcursoIlustracion {
     @NotBlank(message = "La descripcion es obligatoria")
     private String descripcion;
 
-    @OneToMany(mappedBy = "concurso", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Ilustracion> ilustraciones = new ArrayList<>();
+    @OneToMany(mappedBy = "concursoIlustracion")
+    private List<Ilustracion> ilustraciones = new ArrayList<>();//es necesario?
  
-    @OneToMany(mappedBy = "concursoIlustracion_id")
+    @OneToMany(mappedBy = "participacionIlustracion")
     private List<ParticipacionIlustracion> participaciones = new ArrayList<>();
 
     @NotBlank
