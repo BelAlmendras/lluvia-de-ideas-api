@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.10</version>
+		<version>3.5.11</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lluviadeideas</groupId>
 	<artifactId>storiesapi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>storiesapi</name>
-	<description>REST API for managing and serving children’s stories</description>
+	<description>REST API for managing and serving children's stories</description>
 	<url/>
 	<licenses>
 		<license/>

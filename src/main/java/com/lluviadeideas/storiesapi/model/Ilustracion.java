@@ -38,13 +38,9 @@ public class Ilustracion {
     @Column(nullable = false)
     private Integer orden;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cuento_id")
     private Cuento cuento;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "concursoIlustracion_id")
-    private ConcursoIlustracion concursoIlustracion;
 
     @Column(nullable = false)
     private String publicId;

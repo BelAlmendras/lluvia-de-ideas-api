@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "participacion_cuento",uniqueConstraints = @UniqueConstraint(columnNames={"usuario_id","concursoCuento_id" }))
+@Table(name = "participacion_cuento",uniqueConstraints = @UniqueConstraint(columnNames={"concurso_cuento_id", "cuento_id" }))
 @Getter @Setter
 public class ParticipacionCuento{
     
@@ -23,14 +23,17 @@ public class ParticipacionCuento{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "usuario_id",nullable = false)
+    @JoinColumn(name = "usuario_id",nullable = false)
     @ManyToOne
-    private Usuario usuario;
+    private Usuario autor;
 
     @ManyToOne
-    @JoinColumn(name = "concursoCuento_id",nullable = false)
+    @JoinColumn(name = "concurso_cuento_id",nullable = false)
     private ConcursoCuento concursoCuento;
 
+@ManyToOne
+@JoinColumn(name = "cuento_id", nullable = false)
+private Cuento cuento;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

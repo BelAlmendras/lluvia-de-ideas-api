@@ -1,5 +1,5 @@
 package com.lluviadeideas.storiesapi.model;
-
+import jakarta.persistence.Index;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -19,7 +19,10 @@ import jakarta.persistence.GenerationType;
 
 
 @Entity
-@Table(name = "concurso_cuento")
+@Table(name = "concurso_cuento",indexes = {
+        @Index(name = "idx_concurso_activo", columnList = "activo"),
+        @Index(name = "idx_concurso_fecha", columnList = "fechaInicio, fechaFinal")
+    })
 @Getter @Setter
 public class ConcursoCuento {
     
@@ -38,7 +41,7 @@ public class ConcursoCuento {
     @NotBlank
     private String bases;
 
-    @OneToMany(mappedBy = "concursoCuento_id")
+    @OneToMany(mappedBy = "concursoCuento")
     private List<ParticipacionCuento> participaciones = new ArrayList<>();
 
     @Column(nullable=false)
@@ -65,6 +68,7 @@ public class ConcursoCuento {
     protected void onUpdate() {
     updatedAt = LocalDateTime.now();
 }
+
 
 public ConcursoCuento(){};
 

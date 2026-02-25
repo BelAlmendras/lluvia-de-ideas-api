@@ -31,8 +31,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "cuentos", indexes = {
         @Index(name = "idx_cuento_usuario", columnList = "usuario_id"),
-        @Index(name = "idx_cuento_categoria", columnList = "categoria_id"),
-        @Index(name = "idx_cuento_estado", columnList = "estado_id")
+        @Index(name = "idx_cuento_estado", columnList = "estado_cuento")
     })
 @Getter @Setter
 public class Cuento {
@@ -45,9 +44,9 @@ public class Cuento {
     @Column(nullable = false,  length =100)
     private String titulo;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "usuario_id",nullable = false)
-    private Usuario usuario;
+    private Usuario autor;
 
 
     @NotBlank(message = "El cuento debe tener contenido")
@@ -96,10 +95,15 @@ private LocalDateTime fechaDeclaracion;
 @OneToMany(mappedBy = "cuento")
 private List<Reporte> reportes = new ArrayList<>();
 
-@ManyToOne
-@JoinColumn(name = "concursoCuento_id", nullable = true)
-private ConcursoCuento concursoCuento;
+@OneToMany(mappedBy = "cuento",cascade = CascadeType.ALL,orphanRemoval = true
+)
+private List<ParticipacionCuento> participaciones = new ArrayList<>();
 
+@NotNull
+private boolean visible = true;
+
+@NotNull
+private boolean enConcurso = false;
 
 public Cuento() {}
 

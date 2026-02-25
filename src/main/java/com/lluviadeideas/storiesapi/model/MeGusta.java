@@ -1,5 +1,7 @@
 package com.lluviadeideas.storiesapi.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +29,8 @@ public class MeGusta {
     @ManyToOne
     @JoinColumn(name = "cuento_id", nullable = false)
     private Cuento cuento;
+
+    private LocalDateTime fecha;
 
     public MeGusta(){}
 }

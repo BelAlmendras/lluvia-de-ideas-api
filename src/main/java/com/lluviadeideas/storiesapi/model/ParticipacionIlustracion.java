@@ -1,5 +1,6 @@
 package com.lluviadeideas.storiesapi.model;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,7 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "participacion_ilustracion", uniqueConstraints = @UniqueConstraint(columnNames = {"usuario_id","concursoIlustracion_id"}))
+@Table(name = "participacion_ilustracion", uniqueConstraints = @UniqueConstraint(columnNames = {"concursoIlustracion_id", "ilustracion_id"}))
 @Getter @Setter
 public class ParticipacionIlustracion {
     
@@ -23,18 +24,25 @@ public class ParticipacionIlustracion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "usuario_id",nullable = false)
+    @JoinColumn(name = "usuario_id",nullable = false)
     @ManyToOne
-    private Usuario usuario;
+    private Usuario autor;
 
     @ManyToOne
     @JoinColumn(name = "concursoIlustracion_id", nullable = false)
     private ConcursoIlustracion concursoIlustracion;
 
+    @ManyToOne
+    @JoinColumn(name = "ilustracion_id", nullable = false)
+    private Ilustracion ilustracion;
+
+    @ManyToOne
+    @JoinColumn(name = "cuento_id", nullable = false)
+    private Cuento cuento;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private RolConcurso rolConcurso;
-
 
     public ParticipacionIlustracion(){}
 }

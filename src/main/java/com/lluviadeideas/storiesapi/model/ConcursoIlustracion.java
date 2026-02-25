@@ -33,11 +33,8 @@ public class ConcursoIlustracion {
     @Lob
     @NotBlank(message = "La descripcion es obligatoria")
     private String descripcion;
-
-    @OneToMany(mappedBy = "concursoIlustracion")
-    private List<Ilustracion> ilustraciones = new ArrayList<>();//es necesario?
  
-    @OneToMany(mappedBy = "participacionIlustracion")
+    @OneToMany(mappedBy = "concursoIlustracion")
     private List<ParticipacionIlustracion> participaciones = new ArrayList<>();
 
     @NotBlank

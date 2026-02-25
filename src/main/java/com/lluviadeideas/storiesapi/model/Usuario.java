@@ -70,7 +70,7 @@ public class Usuario {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    private RolGlobal rol;
 
     @Column(nullable = false)
     private boolean activo = true;
