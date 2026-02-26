@@ -10,6 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -77,6 +78,9 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario_destino")
     private List<Notificacion> notificacion= new ArrayList<>();
+
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Cuento> cuentos = new ArrayList<>();
 
     @Column(updatable = false)
     private LocalDateTime createdAt;

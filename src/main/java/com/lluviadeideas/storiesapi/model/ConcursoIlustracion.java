@@ -37,6 +37,9 @@ public class ConcursoIlustracion {
     @OneToMany(mappedBy = "concursoIlustracion")
     private List<ParticipacionIlustracion> participaciones = new ArrayList<>();
 
+      @OneToMany(mappedBy = "concursoIlustracion")
+    private List<RolIlustracion> roles;
+
     @NotBlank
     private String bases;
 

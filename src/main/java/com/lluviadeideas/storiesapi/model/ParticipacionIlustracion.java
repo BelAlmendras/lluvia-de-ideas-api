@@ -24,14 +24,11 @@ public class ParticipacionIlustracion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "usuario_id",nullable = false)
-    @ManyToOne
-    private Usuario autor;
-
     @ManyToOne
     @JoinColumn(name = "concursoIlustracion_id", nullable = false)
     private ConcursoIlustracion concursoIlustracion;
 
+    
     @ManyToOne
     @JoinColumn(name = "ilustracion_id", nullable = false)
     private Ilustracion ilustracion;

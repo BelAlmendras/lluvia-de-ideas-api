@@ -21,7 +21,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "evaluacion_ilustracion",  uniqueConstraints =  @UniqueConstraint(columnNames = {"juez_id","ilustracion_id","concurso_ilustracion_id"}))
+@Table(name = "evaluacion_ilustracion",  uniqueConstraints =  @UniqueConstraint(columnNames = {"juez_id","parti_ilustracion_id"}))
 @Getter @Setter
 public class EvaluacionIlustracion {
     
@@ -31,15 +31,11 @@ public class EvaluacionIlustracion {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable=false, name = "juez_id")
-    private Usuario juez;
+    private RolIlustracion juez;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false, name="ilustracion_id")
-    private Ilustracion ilustracion;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false, name="concurso_ilustracion_id")
-    private ConcursoIlustracion concursoIlustracion;
+    @JoinColumn(nullable = false, name="parti_ilustracion_id")
+    private ParticipacionIlustracion participacionIlustracion;
     
     @NotNull(message = "El puntaje es obligatorio")
     private Integer puntaje;

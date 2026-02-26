@@ -23,10 +23,6 @@ public class ParticipacionCuento{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "usuario_id",nullable = false)
-    @ManyToOne
-    private Usuario autor;
-
     @ManyToOne
     @JoinColumn(name = "concurso_cuento_id",nullable = false)
     private ConcursoCuento concursoCuento;

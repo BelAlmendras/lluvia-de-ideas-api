@@ -44,6 +44,9 @@ public class ConcursoCuento {
     @OneToMany(mappedBy = "concursoCuento")
     private List<ParticipacionCuento> participaciones = new ArrayList<>();
 
+    @OneToMany(mappedBy = "concursoCuento")
+    private List<RolCuento> roles;
+
     @Column(nullable=false)
     private LocalDate fechaInicio;
 
